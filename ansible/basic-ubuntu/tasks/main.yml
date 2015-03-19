@@ -36,5 +36,8 @@
 - name: Enable SSH
   ufw: rule=allow name=OpenSSH
 
+- name: Rate Limit SSH
+  ufw: rule=limit name=OpenSSH
+
 - name: Start Ufw
   ufw: state=enabled
