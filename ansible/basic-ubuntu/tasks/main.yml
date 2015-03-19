@@ -15,6 +15,7 @@
     - unzip
     - htop
     - tmux
+    - ufw
   notify:
     - Start NTP
 
@@ -25,3 +26,15 @@
   copy: src=50unattended-upgrades dest=/etc/apt/apt.conf.d/50unattended-upgrades owner=root group=root
   notify:
    - Restart Unattended Upgrades
+
+- name: Disable Incoming Traffic
+  ufw: policy=deny direction=incoming
+
+- name: Enable Outgoing Traffic 
+  ufw: policy=allow direction=outgoing
+
+- name: Enable SSH
+  ufw: rule=allow name=OpenSSH
+
+- name: Start Ufw
+  ufw: state=enabled
