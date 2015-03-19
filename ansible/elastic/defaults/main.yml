@@ -1,0 +1,13 @@
+---
+elasticsearch_download_url: https://download.elasticsearch.org/elasticsearch/elasticsearch
+elasticsearch_version: 1.4.4
+elasticsearch_home_dir: /usr/share/elasticsearch
+elasticsearch_plugin_dir: /usr/share/elasticsearch/plugins
+elasticsearch_log_dir: /var/log/elasticsearch
+elasticsearch_data_dir: /var/lib/elasticsearch
+elasticsearch_work_dir: /tmp/elasticsearch
+elasticsearch_conf_dir: /etc/elasticsearch
+elasticsearch_service_startonboot: yes
+elasticsearch_service_state: started
+elasticsearch_heap: 256m
+elasticsearch_cluster_name: es-workshop-642b3fea-aa53-4972-8e37-57f4791b69b9
