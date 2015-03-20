@@ -29,15 +29,23 @@
 
 - name: Disable Incoming Traffic
   ufw: policy=deny direction=incoming
+  notify: Reload ufw
 
 - name: Enable Outgoing Traffic 
   ufw: policy=allow direction=outgoing
+  notify: Reload ufw
+
+- name: Enable all incoming from localhost
+  ufw: rule=allow src=127.0.0.1
+  notify: Reload ufw
 
 - name: Enable SSH
   ufw: rule=allow name=OpenSSH
+  notify: Reload ufw
 
 - name: Rate Limit SSH
   ufw: rule=limit name=OpenSSH
+  notify: Reload ufw
 
 - name: Start Ufw
   ufw: state=enabled
