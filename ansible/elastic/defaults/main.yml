@@ -1,6 +1,6 @@
 ---
 elasticsearch_download_url: https://download.elasticsearch.org/elasticsearch/elasticsearch
-elasticsearch_version: 1.4.4
+elasticsearch_version: 1.4
 elasticsearch_home_dir: /usr/share/elasticsearch
 elasticsearch_plugin_dir: /usr/share/elasticsearch/plugins
 elasticsearch_log_dir: /var/log/elasticsearch

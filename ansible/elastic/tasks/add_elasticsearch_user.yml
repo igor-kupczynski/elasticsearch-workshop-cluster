@@ -1,0 +1,17 @@
+---
+- name: Add elastic group
+  group: name=elastic state=present
+
+- name: Add elastic user
+  user: name=elastic group=elastic
+
+- name: Set user limits
+  copy: src=limits.conf dest=/etc/security/limits.conf owner=root group=root
+
+- name: Set pam.d to accept user limits
+  lineinfile:
+    line="session required pam_limits.so"
+    dest=/etc/pam.d/common-session
+    regexp="session required pam_limits.so"
+    insertafter="^# end of pam-auth-update config"
+

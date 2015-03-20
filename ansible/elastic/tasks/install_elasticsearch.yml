@@ -1,0 +1,32 @@
+---
+- name: Add elasticsearch repository key
+  apt_key: url=https://packages.elasticsearch.org/GPG-KEY-elasticsearch state=present
+
+- name: Add elasticsearch deb repository
+  apt_repository: repo="deb http://packages.elasticsearch.org/elasticsearch/{{ elasticsearch_version }}/debian stable main"
+
+- name: Workound for Elasticsearch deb installer bug
+  file: path=/etc/elasticsearch/marker state=touch owner=root group=root mode=0644
+  
+- name: Install elasticsearch from deb
+  apt: name=elasticsearch state=present
+  notify: Start elasticsearch
+
+- name: Create elasticsearch_log_dir
+  file: path={{ elasticsearch_log_dir }} state=directory owner=elastic group=elastic recurse=yes
+
+- name: Create elasticsearch_data_dir
+  file: path={{ elasticsearch_data_dir }} state=directory owner=elastic group=elastic recurse=yes
+
+- name: Create elasticsearch_work_dir
+  file: path={{ elasticsearch_work_dir }} state=directory owner=elastic group=elastic recurse=yes
+
+- name: Create elasticsearch_conf_dir
+  file: path={{ elasticsearch_conf_dir }} state=directory owner=elastic group=elastic recurse=yes
+
+- name: Delete elastcsearch_plugin_dir
+  file: path={{ elasticsearch_plugin_dir }} state=absent
+
+- name: Create elasticsearch_plugin_dir
+  file: path={{ elasticsearch_plugin_dir }} state=directory owner=elastic group=elastic recurse=yes
+
