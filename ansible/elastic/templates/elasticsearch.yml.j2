@@ -1,4 +1,5 @@
 cluster.name: {{ elasticsearch_cluster_name }}
+node.name: {{ ansible_nodename }}
 bootstrap.mlockall: true
 discovery.zen.ping.multicast.enabled: false
 discovery.zen.ping.unicast.hosts: []
