@@ -5,8 +5,8 @@
 - name: Add elasticsearch deb repository
   apt_repository: repo="deb http://packages.elasticsearch.org/elasticsearch/{{ elasticsearch_version }}/debian stable main"
 
-- name: Install elasticsearch from deb
-  apt: name=elasticsearch state=present
+- name: Install elasticsearch
+  apt: pkg=haproxy state=installed update_cache=true
   notify: Start elasticsearch
 
 - name: Create elasticsearch_log_dir

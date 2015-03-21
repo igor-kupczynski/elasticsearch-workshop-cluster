@@ -5,3 +5,7 @@
     - basic-ubuntu
     - oracle-java
     - elastic
+- hosts: [es-workshop-1]
+  remote_user: root
+  roles:
+    - proxy

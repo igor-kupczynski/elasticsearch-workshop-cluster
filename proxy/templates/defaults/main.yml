@@ -1,0 +1,3 @@
+---
+haproxy_stats_user: user
+haproxy_stats_pass: pass
