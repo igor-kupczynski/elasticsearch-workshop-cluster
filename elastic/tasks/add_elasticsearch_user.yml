@@ -1,9 +1,9 @@
 ---
-- name: Add elastic group
-  group: name=elastic state=present
+- name: Add elasticsearch group
+  group: name=elasticsearch state=present
 
-- name: Add elastic user
-  user: name=elastic group=elastic
+- name: Add elasticsearch user
+  user: name=elasticsearch group=elasticsearch
 
 - name: Set user limits
   copy: src=limits.conf dest=/etc/security/limits.conf owner=root group=root

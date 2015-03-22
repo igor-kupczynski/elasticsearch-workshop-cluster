@@ -12,4 +12,4 @@
   roles:
     - proxy
   tags:
-    - haproxy
+    - proxy

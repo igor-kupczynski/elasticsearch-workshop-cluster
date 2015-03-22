@@ -11,5 +11,5 @@ elasticsearch_conf_dir: /etc/elasticsearch
 elasticsearch_service_startonboot: yes
 elasticsearch_service_state: started
 
-elasticsearch_heap: 256m
+elasticsearch_heap: 512m
 elasticsearch_cluster_name: es-workshop

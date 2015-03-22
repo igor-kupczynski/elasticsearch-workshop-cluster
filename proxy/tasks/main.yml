@@ -1,10 +1,4 @@
 ---
-- name: Add haproxy group
-  group: name=haproxy state=present
-
-- name: Add haproxy user
-  user: name=haproxy group=elastic
-
 - name: Add haproxy repository
   apt_repository: repo='ppa:vbernat/haproxy-1.5'
 
@@ -36,6 +30,13 @@
 - name: Install HAProxy
   apt: pkg=haproxy state=installed update_cache=true
 
+- name: Add haproxy group
+  group: name=haproxy state=present
+
+- name: Add haproxy user
+  user: name=haproxy group=haproxy
+
+  
 - name: Create haproxy configuration file
   template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg mode=0644 owner=haproxy group=haproxy
   notify: Restart haproxy 

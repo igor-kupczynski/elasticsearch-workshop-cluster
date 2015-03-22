@@ -6,24 +6,23 @@
   apt_repository: repo="deb http://packages.elasticsearch.org/elasticsearch/{{ elasticsearch_version }}/debian stable main"
 
 - name: Install elasticsearch
-  apt: pkg=haproxy state=installed update_cache=true
-  notify: Start elasticsearch
+  apt: pkg=elasticsearch state=installed update_cache=true
 
 - name: Create elasticsearch_log_dir
-  file: path={{ elasticsearch_log_dir }} state=directory owner=elastic group=elastic recurse=yes
+  file: path={{ elasticsearch_log_dir }} state=directory owner=elasticsearch group=elasticsearch recurse=yes
 
 - name: Create elasticsearch_data_dir
-  file: path={{ elasticsearch_data_dir }} state=directory owner=elastic group=elastic recurse=yes
+  file: path={{ elasticsearch_data_dir }} state=directory owner=elasticsearch group=elasticsearch recurse=yes
 
 - name: Create elasticsearch_work_dir
-  file: path={{ elasticsearch_work_dir }} state=directory owner=elastic group=elastic recurse=yes
+  file: path={{ elasticsearch_work_dir }} state=directory owner=elasticsearch group=elasticsearch recurse=yes
 
 - name: Create elasticsearch_conf_dir
-  file: path={{ elasticsearch_conf_dir }} state=directory owner=elastic group=elastic recurse=yes
+  file: path={{ elasticsearch_conf_dir }} state=directory owner=elasticsearch group=elasticsearch recurse=yes
 
 - name: Delete elastcsearch_plugin_dir
   file: path={{ elasticsearch_plugin_dir }} state=absent
 
 - name: Create elasticsearch_plugin_dir
-  file: path={{ elasticsearch_plugin_dir }} state=directory owner=elastic group=elastic recurse=yes
+  file: path={{ elasticsearch_plugin_dir }} state=directory owner=elasticsearch group=elasticsearch recurse=yes
 
