@@ -32,10 +32,15 @@ defaults
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
 
+userlist UsersFor_ElasticWorkshop
+  user {{ cluster_user }} insecure-password {{ cluster_pass }}
+
 frontend es_proxy
     bind *:80
     mode http
     default_backend es_cluster
+    acl AuthOk_ElasticWorkshop http_auth(UsersFor_ElasticWorkshop)
+    http-request auth realm ElasticWorkshop if !AuthOk_ElasticWorkshop
 
 backend es_cluster
     mode http
