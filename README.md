@@ -50,12 +50,8 @@ This cluster is for workshops/experiments. In real world you need to at least:
 Ansible Playbooks
 -----------------
 
-Based on:
+I've got some inspiration for my ansible playbook when looking at these repos:
 
 - https://github.com/Servers-for-Hackers
 - https://github.com/snowplow/ansible-playbooks/
 - https://github.com/Traackr/ansible-elasticsearch
-
-HAProxy config:
-
-- https://serversforhackers.com/load-balancing-with-haproxy
