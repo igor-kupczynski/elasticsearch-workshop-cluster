@@ -1,6 +1,6 @@
 ES_USER=elasticsearch
 ES_GROUP=elasticsearch
-ES_HEAP_SIZE={{ elasticsearch_heap }}
+ES_HEAP_SIZE={{ ansible_memtotal_mb // 2 }}m
 MAX_LOCKED_MEMORY=unlimited
 LOG_DIR={{ elasticsearch_log_dir }}
 DATA_DIR={{ elasticsearch_data_dir }}

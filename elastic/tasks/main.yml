@@ -2,3 +2,4 @@
 - include: add_elasticsearch_user.yml
 - include: install_elasticsearch.yml
 - include: configure_elasticsearch.yml
+- include: install_plugins.yml
