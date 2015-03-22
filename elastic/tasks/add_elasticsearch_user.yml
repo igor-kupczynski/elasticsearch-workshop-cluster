@@ -14,4 +14,3 @@
     dest=/etc/pam.d/common-session
     regexp="session required pam_limits.so"
     insertafter="^# end of pam-auth-update config"
-

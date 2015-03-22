@@ -1,0 +1,5 @@
+[es-nodes]
+# list of ips to be es-node
+
+[proxy]
+# list of ips to be front proxy/load balancer

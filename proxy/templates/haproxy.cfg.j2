@@ -40,7 +40,7 @@ frontend es_proxy
 backend es_cluster
     mode http
     balance roundrobin
-    {% for host in groups['app-servers'] %}
+    {% for host in groups['es-nodes'] %}
     server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}:9200 check
     {% endfor %}
 
@@ -48,4 +48,4 @@ listen stats *:1936
     stats enable
     stats uri /
     stats hide-version
-    stats auth {{ haproxy_sats_user }}:{{ haproxy_stats_password }}
+    stats auth {{ haproxy_stats_user }}:{{ haproxy_stats_pass }}

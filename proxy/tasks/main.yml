@@ -8,12 +8,37 @@
 - name: Add haproxy repository
   apt_repository: repo='ppa:vbernat/haproxy-1.5'
 
+- name: Enable UDP rsyslog
+  lineinfile: 
+    state=present
+    dest=/etc/rsyslog.conf
+    regexp='^#?\$ModLoad imudp'
+    line='$ModLoad imudp'
+  notify: Restart rsyslog
+  
+- name: Set UDP rsyslog port
+  lineinfile:
+    state=present
+    dest=/etc/rsyslog.conf
+    regexp="^#?\$UDPServerRun 514"
+    line="$UDPServerRun 514"
+  notify: Restart rsyslog
+
+- name: Set UDP rsyslog host
+  lineinfile:
+    state=present
+    dest=/etc/rsyslog.conf
+    regexp="^#\$UDPServerAddress 127.0.0.1"
+    line="$UDPServerAddress 127.0.0.1"
+    insertafter="\$UDPServerRun 514"
+  notify: Restart rsyslog
+    
 - name: Install HAProxy
   apt: pkg=haproxy state=installed update_cache=true
 
 - name: Create haproxy configuration file
   template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg mode=0644 owner=haproxy group=haproxy
-  notify: restart haproxy 
+  notify: Restart haproxy 
   
 - name: Enable HAProxy service
   action: service name=haproxy enabled=yes 
