@@ -35,11 +35,18 @@
 
 - name: Add haproxy user
   user: name=haproxy group=haproxy
-
   
 - name: Create haproxy configuration file
   template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg mode=0644 owner=haproxy group=haproxy
   notify: Restart haproxy 
   
 - name: Enable HAProxy service
-  action: service name=haproxy enabled=yes 
+  action: service name=haproxy enabled=yes
+
+- name: Open access to cluster and stats
+  ufw: rule=allow port={{ item }} proto=tcp
+  with_items:
+    - "{{ cluster_port }}"
+    - "{{ stats_port }}"
+  notify: Reload ufw
+

@@ -1,0 +1,3 @@
+---
+cluster_port: 80
+stats_port: 11936

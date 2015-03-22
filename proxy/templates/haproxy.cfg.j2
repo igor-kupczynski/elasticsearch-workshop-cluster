@@ -36,7 +36,7 @@ userlist UsersFor_ElasticWorkshop
   user {{ cluster_user }} insecure-password {{ cluster_pass }}
 
 frontend es_proxy
-    bind *:80
+    bind *:{{ cluster_port }}
     mode http
     default_backend es_cluster
     acl AuthOk_ElasticWorkshop http_auth(UsersFor_ElasticWorkshop)
@@ -49,7 +49,7 @@ backend es_cluster
     server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}:9200 check
     {% endfor %}
 
-listen stats *:1936
+listen stats *:{{ stats_port }}
     stats enable
     stats uri /
     stats hide-version
