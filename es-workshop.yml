@@ -5,11 +5,15 @@
     - basic-ubuntu
     - oracle-java
     - elastic
+  vars_files:
+    - secrets.yml
   tags:
     - elastic
 - hosts: [proxy]
   remote_user: root
   roles:
     - proxy
+  vars_files:
+    - secrets.yml
   tags:
     - proxy
