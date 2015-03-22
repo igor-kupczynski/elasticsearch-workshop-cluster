@@ -40,10 +40,11 @@ You cluster is accessible via the proxy machine
 
 You can also access haproxy stats, just go to http://188.166.17.197:11936/
 
-# Warning
+# Not production ready!
 
-This cluster is for workshops/experiments. In real world you need to
-set up https connection to avoid sending passwords in plaintext.
+This cluster is for workshops/experiments. In real world you need to at least:
+* set up https connection to avoid sending passwords in plaintext
+* separate data nodes from clients from masters
 
 Ansible Playbooks
 -----------------
