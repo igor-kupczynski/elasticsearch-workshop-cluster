@@ -2,5 +2,8 @@ cluster.name: {{ elasticsearch_cluster_name }}
 node.name: {{ ansible_nodename }}
 bootstrap.mlockall: true
 discovery.zen.ping.multicast.enabled: false
-discovery.zen.ping.unicast.hosts: []
+discovery.zen.ping.unicast.hosts:
+{% for host in groups['es-nodes'] %}
+  - {{ hostvars[host][private_network_interface]['ipv4']['address'] }}
+{% endfor %}
 discovery.zen.minimum_master_nodes: 1

@@ -5,6 +5,8 @@
     - basic-ubuntu
     - oracle-java
     - elastic
+  vars:
+    private_network_interface: ansible_eth1
   vars_files:
     - secrets.yml
   tags:
@@ -13,6 +15,8 @@
   remote_user: root
   roles:
     - proxy
+  vars:
+    private_network_interface: ansible_eth1
   vars_files:
     - secrets.yml
   tags:

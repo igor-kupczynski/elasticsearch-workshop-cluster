@@ -46,7 +46,7 @@ backend es_cluster
     mode http
     balance roundrobin
     {% for host in groups['es-nodes'] %}
-    server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}:9200 check
+    server {{ hostvars[host]['ansible_hostname'] }} {{ hostvars[host][private_network_interface]['ipv4']['address'] }}:9200 check
     {% endfor %}
 
 listen stats *:{{ stats_port }}
