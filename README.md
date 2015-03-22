@@ -51,9 +51,11 @@ Ansible Playbooks
 -----------------
 
 Based on:
+
 - https://github.com/Servers-for-Hackers
 - https://github.com/snowplow/ansible-playbooks/
 - https://github.com/Traackr/ansible-elasticsearch
 
 HAProxy config:
+
 - https://serversforhackers.com/load-balancing-with-haproxy
