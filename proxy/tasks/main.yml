@@ -22,7 +22,7 @@
   lineinfile:
     state=present
     dest=/etc/rsyslog.conf
-    regexp="^#\$UDPServerAddress 127.0.0.1"
+    regexp="^#?\$UDPServerAddress 127.0.0.1"
     line="$UDPServerAddress 127.0.0.1"
     insertafter="\$UDPServerRun 514"
   notify: Restart rsyslog
@@ -43,5 +43,3 @@
   
 - name: Enable HAProxy service
   action: service name=haproxy enabled=yes 
-- name: Restart elasticsearch
-  service: name=elasticsearch state=restarted
