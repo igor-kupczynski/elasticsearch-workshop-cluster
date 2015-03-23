@@ -4,33 +4,35 @@ Elasticsearch Workshop
 What is it?
 -----------
 
-This is an ansible playbook to create elasticsearch cluster on few
+This is an ansible playbook to create an elasticsearch cluster on few
 vanilla Ubuntu 14.04 machines (e.g. the ones you can provision at
 digital ocean). The cluster can be useful for experimentation or, with
 some tweaking, to your particular use case in production.
 
 Background
 ----------
+If you followed my blog you may known than I'm responsible for
+changing my employer's in-house search appliance to a new one backed
+by Elasticsearch. We had a huge data volume, even though we are not
+fully migrated to Elasticsearch yet. During our day to day operations
+we see a lot of interesting cases. I think we reached that point where
+reading documentation, news groups and blogs is simply not enough to
+explain everything we see in the trenches. I often feel a need to
+experiment with an Elasticsearch cluster.
 
-On 26.03.2015 I'll conduct a workshop on Elasticsearch at Poznań
-University of Technology, i.e. my *Alma Matter*. In order to avoid
-making students install Elasticsearch on their own laptops I've
-created a cluster on [digital ocean][do].
-
-Here is the ansible playbook to easily recreate it.
+I've created an ansible playbook to provision one. With the playbook,
+ut is a dead-easy task to provision the cluster in matter of
+minutes. I use vanilla Ubuntu 14.04 machines on [digital ocean][do],
+but any other cloud provide will work.
 
 [do]: https://www.digitalocean.com/?refcode=649b18bb5e59
 
-If you followed my blog you might have known than I'm responsible for
-changing my employers in-house search appliance to a new one backed by
-Elasticsearch. We had a huge data volume, even though we are not fully
-migrated to Elasticsearch and during our day to day operations we see
-a lot of interesting cases. I think we reached that point when reading
-the documentation, news groups and blogs is not enough to explain
-everything and I often feel a need to experiment with an Elasticsearch
-cluster. With this playbook it is dead-easy to provision one in a
-matter of minutes. Then you can play and break it and then quickly
-reprovision.
+Additionally, on *26.03.2015* I'll conduct a workshop on Elasticsearch
+at [Poznań University of Technology][put], i.e. my *alma matter*. In
+order to make it simple for students I've created a cluster which we
+can use on the workshop.
+
+[put]: http://www.put.edu.pl/
 
 Cluster architecture
 --------------------
@@ -142,7 +144,19 @@ This cluster is for workshops/experiments. In real world you need to at least:
 Why ansible?
 ------------
 
+There are many tools to help you automate your deployment,
+provisioning and configuration nowadays. [Ansible][ansible] stands out
+as easy to use --- it uses yaml as DSL, popular --- lot of blog posts
+and recipes on-line and most of all --- agent-less. It is purely SSH
+based and doesn't need any kind of a central server to coordinate. It
+makes Ansible perfect for small projects with small teams.
 
+It was recommended too my by one of my devops colleagues at
+[Egnyte][egn]. We use puppet to manage the infrastructure there, but
+it seems an overkill for a small pet-project.
+
+[ansible]:http://docs.ansible.com/index.html
+[egn]: http://egnyte.com/
 
 Ansible Playbooks
 -----------------
