@@ -7,7 +7,7 @@ What is it?
 This is an ansible playbook to create elasticsearch cluster on few
 vanilla Ubuntu 14.04 machines (e.g. the ones you can provision at
 digital ocean). The cluster can be useful for experimentation or, with
-some tweeking to your particular use case even in production.
+some tweaking, to your particular use case in production.
 
 Background
 ----------
