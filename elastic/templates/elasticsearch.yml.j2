@@ -7,3 +7,4 @@ discovery.zen.ping.unicast.hosts:
   - {{ hostvars[host][private_network_interface]['ipv4']['address'] }}
 {% endfor %}
 discovery.zen.minimum_master_nodes: {{ groups['es-nodes']|length // 2 + 1 }}
+network.host: {{ hostvars[inventory_hostname][private_network_interface]['ipv4']['address']  }}

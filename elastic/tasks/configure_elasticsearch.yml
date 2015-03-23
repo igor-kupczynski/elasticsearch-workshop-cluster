@@ -10,6 +10,12 @@
 - name: Enable elasticsearch
   service: name=elasticsearch enabled=yes state=started
 
+- name: Open ports for intenal http communication
+  ufw: rule=allow port=9200 proto=tcp src="{{ hostvars[item][private_network_interface]['ipv4']['address'] }}"
+  with_items:
+    - "{{ groups['es-nodes'] }}"
+
+  
 - name: Open ports for intenal cluster communication
   ufw: rule=allow port=9300 proto=tcp src="{{ hostvars[item][private_network_interface]['ipv4']['address'] }}"
   with_items:

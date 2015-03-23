@@ -34,7 +34,7 @@
   group: name=haproxy state=present
 
 - name: Add haproxy user
-  user: name=haproxy group=haproxy
+  user: name=haproxy group=haproxy state=present
   
 - name: Create haproxy configuration file
   template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg mode=0644 owner=haproxy group=haproxy
