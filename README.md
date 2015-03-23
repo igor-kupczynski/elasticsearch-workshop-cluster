@@ -37,20 +37,30 @@ can use on the workshop.
 Cluster architecture
 --------------------
 
-* HAProxy in front of an Elasticsearch cluster.
-* 1 machine for haproxy (this can be the same box as one of the other
-  nodes)
-* 1+ machine for elasticsearch nodes; all nodes play all the roles -
-  master, client and data
-* haproxy accesses the nodes via http protocol on :9200
-* the nodes form a cluster and communicate via the native protocol on
-  :9300
-* all the ports are blocked both from the public internet and the
-  private network with the exceptions of:
-    * 9300 and 9200 on the private network, they are used to for m a
-      cluster and to accept the requests from haproxy
-    * 80, 11936 are open for the public access on haproxy node
-    * 22 is open everywhere
+![cluster](cluster.png)
+
+* HAProxy in front of an Elasticsearch cluster, provides:
+    * Load balancing requests to all of the cluster nodes
+    * Enforces HTTP basic auth
+    * 1 machine for haproxy, but this can be the same box as one of
+      the other nodes
+* 1+ machine for elasticsearch nodes
+    * 3+ are recommended to play with high availability, replicas,
+      shard allocation and all the fun associated with distributed
+      systems
+    * Each node is data node, client node and master node
+* Open ports
+    * HAProxy accesses the nodes via http protocol on :9200
+    * Nodes form a cluster and communicate via the native protocol on
+      :9300
+    * all the ports are blocked both from the public internet and the
+      private network with the exceptions of:
+        * :9300 and :9200 on the private network, they are used to for m a
+          cluster and to accept the requests from haproxy
+        * :80, :11936 are open for the public access on haproxy node
+        * :22 is open everywhere, but ssh is rate limited to 6
+          attempts per 30 seconds
+        * `ufw` is used to configure the firewall
 
 Prerequisites
 -------------
