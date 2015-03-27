@@ -1,5 +1,5 @@
-Elasticsearch Workshop
-======================
+Make Me a Cluster
+=================
 
 What is it?
 -----------
